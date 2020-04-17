@@ -21,19 +21,24 @@ export const query = graphql`
 
 const Products = ({data}) => {
   return (
-    <div>
+    <table>
+      <tr>
+        <th>Title</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Preview</th>
+      </tr>
       {
         data.allMarkdownRemark.edges.map((product) => {
-          return <div>
-              <div>{product.node.frontmatter.title}</div>
-              <div>{product.node.frontmatter.price} €</div>
-              <div>{product.node.frontmatter.description}</div>
-              <div><img src={product.node.frontmatter.image} alt=""/></div>
-            ---------------------------
-          </div>
+          return <tr>
+              <td>{product.node.frontmatter.title}</td>
+              <td>{product.node.frontmatter.price} €</td>
+              <td>{product.node.frontmatter.description}</td>
+              <td><img src={product.node.frontmatter.image} alt=""/></td>
+          </tr>
         })
       }
-    </div>
+    </table>
   )
 }
 

@@ -1,0 +1,17 @@
+backend:
+  name: github
+  repo: Stupa163/gatsby-test
+
+media_folder: static/assets
+public_folder: /assets
+
+collections:
+  - name: product
+    label: Produit
+    folder: products
+    create: true
+    fields:
+      - { name: title, required: true, label: Titre}
+      - { name: price, required: true, label: Prix}
+      - { name: description, required: true, label: Description, widget: markdown}
+      - { name: image, required: true, label: Image, widget: image}

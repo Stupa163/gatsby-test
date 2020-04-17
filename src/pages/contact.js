@@ -1,8 +1,9 @@
 import React from "react"
+import Success from "./success"
 
 const Contact = () => {
   return (
-    <form name="contact" method="post" netlify-honeypot="bot-field" data-netlify="true">
+    <form name="contact" method="post" netlify-honeypot="bot-field" data-netlify="true" action="/success">
       <input type="hidden" name="form-name" value="contact" />
       <p>
         <label>Your Name: <input type="text" name="name"/></label>

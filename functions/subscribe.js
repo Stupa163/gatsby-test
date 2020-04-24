@@ -7,9 +7,10 @@ exports.handler = function(event, context, callback) {
       "email_address": event.queryStringParameters.mail,
       "status": "subscribed"
     },
-    {
-      username: "remi.stupa@gmail.com",
-      password: "5007001e0e43d2c9b54f9a0db6dfba22-us8"
+    { auth: {
+        username: "remi.stupa@gmail.com",
+        password: "5007001e0e43d2c9b54f9a0db6dfba22-us8"
+      }
     }
   ).then(() => {
     callback(null, {

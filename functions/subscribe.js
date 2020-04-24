@@ -1,4 +1,5 @@
 const axios = require("axios")
+require('dotenv').config()
 
 exports.handler = function(event, context, callback) {
   axios.post(
@@ -9,7 +10,7 @@ exports.handler = function(event, context, callback) {
     },
     { auth: {
         username: "remi.stupa@gmail.com",
-        password: "5007001e0e43d2c9b54f9a0db6dfba22-us8"
+        password: process.env.API_KEY
       }
     }
   ).then(() => {

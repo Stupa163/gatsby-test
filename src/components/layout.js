@@ -18,9 +18,24 @@ const Layout = ({ children }) => {
     </li>
   )
 
-  function handleClick(e) {
-    window.netlifyIdentity.open();
-    console.log('The link was clicked.');
+  function handleClick() {
+    try {
+      window.netlifyIdentity.open();
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  function loggedOrNot() {
+    try {
+      if (window.netlifyIdentity.store.user === null) {
+        return <button onClick={handleClick} style={{float: `right`}}>Login</button>;
+      } else {
+        return <span style={{float: `right`}}>{'welcome' + window.netlifyIdentity.store.user.user_metadata.full_name}</span>
+      }
+    } catch (e) {
+      console.error(e)
+    }
   }
 
   return (
@@ -29,7 +44,7 @@ const Layout = ({ children }) => {
         <Link to="/" style={{ textShadow: `none`, backgroundImage: `none` }}>
           <h3 style={{ display: `inline` }}>MySweetSite</h3>
         </Link>
-        <button onClick={handleClick} style={{float: `right`}}>Login</button>
+        {loggedOrNot()}
         <ul style={{ listStyle: `none`, float: `right` }}>
           <ListLink to="/">Home</ListLink>
           <ListLink to="/contact">Contact</ListLink>

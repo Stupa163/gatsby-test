@@ -31,7 +31,7 @@ const Layout = ({ children }) => {
       if (window.netlifyIdentity.store.user === null) {
         return <button onClick={handleClick} style={{float: `right`}}>Login</button>;
       } else {
-        return <span style={{float: `right`}}>{'welcome' + window.netlifyIdentity.store.user.user_metadata.full_name}</span>
+        return <span style={{float: `right`}}>{'Welcome ' + window.netlifyIdentity.store.user.user_metadata.full_name}</span>
       }
     } catch (e) {
       console.error(e)

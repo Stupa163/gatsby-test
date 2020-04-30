@@ -7,40 +7,35 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 
-import Header from "./header"
 import "./layout.css"
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
+  const ListLink = props => (
+    <li style={{ display: `inline-block`, marginRight: `1rem` }}>
+      <Link to={props.to}>{props.children}</Link>
+    </li>
+  )
 
   return (
-    <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
-    </>
+    <div style={{ margin: `3rem auto`, maxWidth: 650, padding: `0 1rem` }}>
+      <header style={{ marginBottom: `1.5rem` }}>
+        <div data-netlify-identity-menu></div>
+        <div data-netlify-identity-button>Login with Netlify Identity</div>
+
+        <Link to="/" style={{ textShadow: `none`, backgroundImage: `none` }}>
+          <h3 style={{ display: `inline` }}>MySweetSite</h3>
+        </Link>
+        <ul style={{ listStyle: `none`, float: `right` }}>
+          <ListLink to="/">Home</ListLink>
+          <ListLink to="/contact">Contact</ListLink>
+          <ListLink to="/products">Products</ListLink>
+        </ul>
+      </header>
+      {children}
+      <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    </div>
   )
 }
 

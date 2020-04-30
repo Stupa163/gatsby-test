@@ -18,18 +18,25 @@ const Layout = ({ children }) => {
     </li>
   )
 
+  function handleClick(e) {
+    window.netlifyIdentity.open();
+    console.log('The link was clicked.');
+  }
+
   return (
     <div style={{ margin: `3rem auto`, maxWidth: 650, padding: `0 1rem` }}>
       <header style={{ marginBottom: `1.5rem` }}>
         <Link to="/" style={{ textShadow: `none`, backgroundImage: `none` }}>
           <h3 style={{ display: `inline` }}>MySweetSite</h3>
         </Link>
+        <button onClick={handleClick} style={{float: `right`}}>Login</button>
         <ul style={{ listStyle: `none`, float: `right` }}>
           <ListLink to="/">Home</ListLink>
           <ListLink to="/contact">Contact</ListLink>
           <ListLink to="/products">Products</ListLink>
         </ul>
       </header>
+      <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
       {children}
     </div>
   )

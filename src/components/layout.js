@@ -21,9 +21,6 @@ const Layout = ({ children }) => {
   return (
     <div style={{ margin: `3rem auto`, maxWidth: 650, padding: `0 1rem` }}>
       <header style={{ marginBottom: `1.5rem` }}>
-        <div data-netlify-identity-menu></div>
-        <div data-netlify-identity-button>Login with Netlify Identity</div>
-
         <Link to="/" style={{ textShadow: `none`, backgroundImage: `none` }}>
           <h3 style={{ display: `inline` }}>MySweetSite</h3>
         </Link>
@@ -34,7 +31,6 @@ const Layout = ({ children }) => {
         </ul>
       </header>
       {children}
-      <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     </div>
   )
 }

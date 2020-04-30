@@ -11,8 +11,7 @@ const IndexPage = () => (
     <h1>Hi people</h1>
     <p>Welcome to your new Gatsby site.</p>
     <p>Now go build something great.</p>
-    <div data-netlify-identity-menu></div>
-    <div data-netlify-identity-button>Login with Netlify Identity</div>
+    <div data-netlify-identity-menu>Login with Netlify Identity</div>
 
     <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
       <Image />
